@@ -5,7 +5,7 @@ public class WeightedQuickUnion {
 	// id[i] is parent of i.
 	private int[] id;
 	private int[] sz;
-
+ 
 	// initialize union-find data structure with n objects (0 to n-1)
 	public WeightedQuickUnion(int n) {
 		id = new int[n];
