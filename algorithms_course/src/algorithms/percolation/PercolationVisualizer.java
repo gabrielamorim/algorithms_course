@@ -67,7 +67,7 @@ public class PercolationVisualizer {
 
     public static void main(String[] args) {
         //In in = new In(args[0]);      // input file
-        In in = new In("/home/gamorim/git/algorithms/algorithms_course/src/algorithms/percolation/files/sedgewick60.txt");
+        In in = new In("/home/gamorim/git/algorithms/algorithms_course/src/algorithms/percolation/files/input3.txt");
         int n = in.readInt();         // n-by-n percolation system
 
         // turn on animation mode

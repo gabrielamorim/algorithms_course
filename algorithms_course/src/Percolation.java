@@ -69,13 +69,15 @@ public class Percolation {
           }
           
           private void validateIndex(int i) {
-                    if ((i < 1 && i > elementsSize)) {
+                    if ((i < 1 && i > nGridSize)) {
                               throw new java.lang.IndexOutOfBoundsException();
                     }
           }
 
           // is site (row i, column j) open?
           public boolean isOpen(int i, int j) {
+                    validateIndex(i);
+                    validateIndex(j);
                     int index = xyTo1D(i, j);
                     return openElements[index] > 0 ? true : false;
           }
@@ -83,14 +85,20 @@ public class Percolation {
 
           // is site (row i, column j) full?
           public boolean isFull(int i, int j) {
+                    validateIndex(i);
+                    validateIndex(j);
                     int index = xyTo1D(i, j);
-                    return elements.connected(index, 0) && isOpen(i, j);
+                    boolean isFull = false;
+                    openElements[elementsSize + 1] = 0;
+                    isFull = elements.connected(index, 0) && isOpen(i, j);
+                    openElements[elementsSize + 1] = 1;
+                    return isFull;
           }
 
           // does the system percolate?
           public boolean percolates() {
-        	        if(nGridSize == 1 && !isOpen(1, 1)) {
-        	        	return false;
+        	        if (nGridSize == 1 && !isOpen(1, 1)) {
+        	             return false;
         	        }
                     return elements.connected(0, elementsSize + 1);          
           }
