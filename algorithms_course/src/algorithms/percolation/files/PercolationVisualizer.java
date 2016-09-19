@@ -1,5 +1,3 @@
-package algorithms.percolation;
-
 /******************************************************************************
  *  Compilation:  javac PercolationVisualizer.java
  *  Execution:    java PercolationVisualizer input.txt
@@ -58,16 +56,13 @@ public class PercolationVisualizer {
         StdDraw.setFont(new Font("SansSerif", Font.PLAIN, 12));
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.text(0.25*n, -0.025*n, opened + " open sites");
-        if (perc.percolates()) 
-        	StdDraw.text(0.75*n, -0.025*n, "percolates");
-        else                   
-        	StdDraw.text(0.75*n, -0.025*n, "does not percolate");
+        if (perc.percolates()) StdDraw.text(0.75*n, -0.025*n, "percolates");
+        else                   StdDraw.text(0.75*n, -0.025*n, "does not percolate");
 
     }
 
     public static void main(String[] args) {
-        //In in = new In(args[0]);      // input file
-        In in = new In("/home/gamorim/git/algorithms/algorithms_course/src/algorithms/percolation/files/sedgewick60.txt");
+        In in = new In(args[0]);      // input file
         int n = in.readInt();         // n-by-n percolation system
 
         // turn on animation mode

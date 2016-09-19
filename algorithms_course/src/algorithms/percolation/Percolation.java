@@ -45,7 +45,7 @@ public class Percolation {
 		}
 		
 		//down
-		if(!(index + nGridSize >= elementsSize)) {
+		if(!(index + nGridSize > elementsSize)) {
 			if(openElements[index + nGridSize] > 0) {
 				elements.union(index, index + nGridSize);
 			}
@@ -91,20 +91,17 @@ public class Percolation {
 
 	// does the system percolate?
 	public boolean percolates() {
+		
+		if(nGridSize == 1 && !isOpen(1, 1)) {
+			return false;
+		}
+		
 		return elements.connected(0, elementsSize + 1);	
 	}
 
 	// test client (optional)
 	public static void main(String[] args) {
-		Percolation percolation = new Percolation(5);
-		
-		System.out.println("xyTo1D(1, 1): " + percolation.xyTo1D(1, 1));
-		System.out.println("xyTo1D(1, 5): " + percolation.xyTo1D(1, 5));
-		System.out.println("xyTo1D(5, 5): " + percolation.xyTo1D(5, 5));
-		System.out.println("xyTo1D(3, 3): " + percolation.xyTo1D(3, 3));
-		System.out.println("xyTo1D(2, 4): " + percolation.xyTo1D(2, 4));
-		System.out.println("xyTo1D(4, 2): " + percolation.xyTo1D(4, 2));
-				
-		
+		Percolation percolation = new Percolation(1);
+		System.out.println(percolation.percolates());		
 	}
 }

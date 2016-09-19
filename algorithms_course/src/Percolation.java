@@ -43,7 +43,7 @@ public class Percolation {
                     }
                     
                     // down
-                    if (!(index + nGridSize >= elementsSize)) {
+                    if (!(index + nGridSize > elementsSize)) {
                               if (openElements[index + nGridSize] > 0) {
                                         elements.union(index, index + nGridSize);
                               }
@@ -89,6 +89,9 @@ public class Percolation {
 
           // does the system percolate?
           public boolean percolates() {
+        	        if(nGridSize == 1 && !isOpen(1, 1)) {
+        	        	return false;
+        	        }
                     return elements.connected(0, elementsSize + 1);          
           }
 
